@@ -1,0 +1,41 @@
+---
+const services = [
+  {
+    icon: '💻',
+    title: 'Computer Repair',
+    description: 'Fast and reliable computer troubleshooting and repair. We fix hardware issues, software problems, and performance issues.'
+  },
+  {
+    icon: '📱',
+    title: 'Phone Support',
+    description: 'Get help with your smartphone. We assist with setup, troubleshooting, app issues, and device configuration.'
+  },
+  {
+    icon: '🏠',
+    title: 'In-Home Service',
+    description: 'We come to you! Expert tech support in the comfort of your home. Serving Orlando and surrounding areas.'
+  },
+  {
+    icon: '🌐',
+    title: 'Remote Support',
+    description: 'Can\'t meet in person? We can remotely access your device to diagnose and fix issues quickly and securely.'
+  }
+];
+---
+
+<section id="services" class="py-16 bg-base-100">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">Our Services</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {services.map(service => (
+        <div class="card bg-base-200 shadow-md hover:shadow-lg transition-shadow">
+          <div class="card-body items-center text-center">
+            <div class="text-4xl mb-2">{service.icon}</div>
+            <h3 class="card-title justify-center">{service.title}</h3>
+            <p class="text-sm opacity-70">{service.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
