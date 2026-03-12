@@ -25,15 +25,15 @@ const navLinks = [
         </label>
       </li>
     </ul>
-    <div class="dropdown dropdown-end md:hidden">
-      <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+    <div class="dropdown dropdown-end md:hidden" id="mobile-menu">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-circle" id="menu-button">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
         </svg>
       </div>
-      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52" id="menu-dropdown">
         {navLinks.map(link => (
-          <li><a href={link.href}>{link.label}</a></li>
+          <li><a href={link.href} class="menu-link">{link.label}</a></li>
         ))}
         <li>
           <label class="swap swap-rotate">
@@ -46,3 +46,25 @@ const navLinks = [
     </div>
   </div>
 </header>
+
+<script>
+  const menu = document.getElementById('mobile-menu');
+  const menuButton = document.getElementById('menu-button');
+  const menuLinks = document.querySelectorAll('.menu-link');
+
+  menuButton?.addEventListener('click', () => {
+    menu?.classList.toggle('dropdown-open');
+  });
+
+  menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      menu?.classList.remove('dropdown-open');
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (menu && !menu.contains(e.target as Node)) {
+      menu.classList.remove('dropdown-open');
+    }
+  });
+</script>
